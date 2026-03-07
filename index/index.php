@@ -48,92 +48,44 @@ $result="NO valid courses entered.";
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+ <meta charset="UTF-8">
 <title>GPA Calculator</title>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="script.js"></script>
 </head>
-
 <body>
+<h1>GPA Calculator</h1> 
+<?php if ($result != ""):?>
+<?php echo $tableHtml;?> 
 
-<div class="container mt-4">
+<p><strong><?= $result ?></strong></p>
+<? php endif;?> 
+<form action="" method="post" onsubmit="return validateForm ();"> 
+<div id="courses"> 
+<div class=" course-row">
+<label>Course:</label> 
+<input type="text" name="course []" 
 
-<h2 class="text-center">GPA Calculator</h2>
-  
-<h4 class="text-center">Course: Web Development</h4>
-  
-<form id="gpaForm">
-  <table class="table mt-4">
-<thead>
-<tr>
-<th>Course Name</th>
-<th>Credits</th>
-<th>Grade</th>
-</tr>
-</thead>
-
-<tbody id="courseList">
-
-<tr>
-<td><input type="text" class="form-control"></td>
-<td><input type="number" class="form-control"></td>
-<td>
-<select class="form-control">
-<option>A</option>
-<option>B</option>
-<option>C</option>
-<option>D</option>
-<option>F</option>
-</select>
-</td>
-</tr>
-
-</tbody>
-</table>
-
-<table class="table table-bordered">
-<thead class="table-dark">
-<tr>
-<th>Course</th>
-<th>Credits</th>
-<th>Grade</th>
-<th>Action</th>
-</tr>
-</thead>
-
-<tbody id="courses">
-
-<tr class="course-row">
-<td><input type="text" name="course[]" class="form-control"></td>
-<td><input type="number" name="credits[]" class="form-control"></td>
-<td><input type="text" name="grade[]" class="form-control"></td>
-<td>
-<button type="button" class="btn btn-danger remove-row">Remove</button>
-</td>
-</tr>
-
-</tbody>
-</table>
-
-<button type="button" id="addRow" class="btn btn-primary">
-Add Course
-</button>
-
-<button type="submit" class="btn btn-success">
-Calculate GPA
-</button>
-
-</form>
-
-<div id="result" class="mt-4"></div>
-
+placeholder="e.g. Mathematics" required>
+<label>Credits:</label> 
+<input type="number" name=" credits []" 
+   placeholder="e.g. 3" min="1" required>
+   <label>Grade:</label> 
+<select name="grade []"> 
+   <option value="4.O">A</option>
+  <option value="3.0">B</option>
+   <option value="2.0"></option>
+   <option value="1.0">D</option>
+   <option value="O.0">F</option>
+</select> 
 </div>
-
+</div> 
+<button type="button" onclick="addcourse ()"> 
++ Add Course 
+</button><br><br> 
+<input type="submit" value="Calculate GPA"> 
+</form> 
 </body>
-</html>
+</html> 
