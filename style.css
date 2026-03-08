@@ -1,6 +1,6 @@
 body{
 
-font-family: Arial;
+font-family: Arial, sans-serif;
 margin:20px;
 background-color:#e9ecef;
 
@@ -30,7 +30,12 @@ border-radius:4px;
 
 }
 
-button{
-
-padding:6px 10px;
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+text-align: center; 
+}
+table th { 
+background -color: #007 BFF; 
+  color: white; 
 }
