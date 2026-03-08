@@ -1,109 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<title>GPA Calculator</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<h1>GPA Calculator</h1>
-
-<form>
-
-<div id="courses">
-
-<div class="course">
-<label>Course:</label>
-<input type="text" name="course[]">
-
-<label>Credits:</label>
-<input type="number" name="credits[]" min="1">
-
-<label>Grade:</label>
-<select name="grade[]">
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-
-</div>
-
-</div>
-
-<br>
-
-<button type="button" onclick="addCourse()">Add Course</button>
-
-<button type="button" onclick="calculateGPA()">Calculate GPA</button>
-
-</form>
-
-<h2 id="result"></h2>
-
-<script>
-
-function addCourse() {
-
-let div = document.createElement("div");
-
-div.className = "course";
-
-div.innerHTML = 
-<label>Course:</label>
-<input type="text" name="course[]">
-
-<label>Credits:</label>
-<input type="number" name="credits[]" min="1">
-
-<label>Grade:</label>
-<select name="grade[]">
-<option value="4">A</option>
-<option value="3">B</option>
-<option value="2">C</option>
-<option value="1">D</option>
-<option value="0">F</option>
-</select>
-;
-
-document.getElementById("courses").appendChild(div);
-
-}
-
-function calculateGPA() {
-
-let credits = document.getElementsByName("credits[]");
-let grades = document.getElementsByName("grade[]");
-
-let totalCredits = 0;
-let totalPoints = 0;
-
-for (let i = 0; i < credits.length; i++) {
-
-let credit = parseFloat(credits[i].value);
-let grade = parseFloat(grades[i].value);
-
-if (!isNaN(credit)) {
-
-totalCredits += credit;
-totalPoints += credit * grade;
-
-}
-
-}
-
-let gpa = totalPoints / totalCredits;
-
-document.getElementById("result").innerText =
-"Your GPA is: " + gpa.toFixed(2);
-
-}
-
-</script>
-
+<html lang="en"> 
+  <head> 
+<meta charset="UTF-8"> 
+<title>GPA Calculator</title> 
+<link rel="stylesheet" href="style.css"> 
+<script src="script.js"></script> 
+  </head> 
+<body> 
+<h1>GPA Calculator</h1> 
+<form action="calculate.php" method="post" 
+    onsubmit="return validateForm ();">
+  <div id="courses"> 
+  <div class="courses -row"> 
+    <label>Course:</label> 
+    <input type="text" name="course []" 
+      placeholder="e.g.Mathematics" required> 
+    <label>Credits:</label> 
+<input type="number" name="credits []" 
+  placeholder="e.g.3" min="1" required>
+     <label>Grade:</label> 
+    <select name=" grade []"> 
+      
+      <option value="4.0">A</option>
+      <option value="3.0">B</option>
+      <option value="2.0">C</option>
+      <option value="1.0">D</option>
+      <option value="O.O">F</option>
+    </select> 
+   </div> 
+  </div> 
+  <button type="button" onclick="addcourse ()"> 
+  + Add Course 
+  </button><br><br> 
+  <input type=" submit" value="Calculate GPA"> 
+  </form> 
 </body>
-</html>
+</html> 
