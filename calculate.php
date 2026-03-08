@@ -1,68 +1,55 @@
 <?php
-
+if (isset($_POST ['course'], $_POST [' credits'], $_POST['grade'])){
 $courses = $_POST['course'];
 $credits = $_POST['credits'];
 $grades = $_POST['grade'];
 
 $total_points = 0;
 $total_credits = 0;
-
+echo "<table>";
+  echo "<tr> 
+  <th>Course</th>
+  <th>Credits</th>
+  <th>Grade</th>
+  <th>Grade Points</th> 
+</tr>"; 
 for($i = 0; $i < count($courses); $i++){
 
-$points = $grades[$i] * $credits[$i];
+  $course   = htmlspecialchars ($courses [$i]);
+  $cr       =floatval($credits[sil);
+  $g        =floatval($grades [$i]);
+  
+  if ($cr <= o) continue;
+  $pts = $cr *$g;
+  stotalPoints += $pts;
+  $totalCredits += $cr;
+    echo "<tr> 
+         <td>$course</td>
+         <td>$cr</td>
+         <td>$g</td>
+         <td>$pts</td>
+         </tr>"; 
 
-$total_points += $points;
-
-$total_credits += $credits[$i];
-
+echo "<</table>"; 
+  
+if ($totalCredits >o){ 
+  $gpa= $totalPoints / $totalcredits;
+  if ($gpa >= 3.7){
+    $interpretation-"Distinction"; 
+} elseif ($gpa >= 3.0) { 
+    $interpretation = "Merit": 
+} elseif ($gpa >=2.0) { 
+    $interpretation = "Pass"; 
+} else {
+    $interpretation ="Fail"; 
 }
-
-$gpa = $total_points / $total_credits;
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>Result</title>
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<h1>GPA Result</h1>
-
-<table border="1">
-
-<tr>
-
-<th>Course</th>
-<th>Credits</th>
-<th>Grade</th>
-
-</tr>
-
-<?php
-
-for($i = 0; $i < count($courses); $i++){
-
-echo "<tr>";
-echo "<td>".$courses[$i]."</td>";
-echo "<td>".$credits[$i]."</td>";
-echo "<td>".$grades[$i]."</td>";
-echo "</tr>";
-
+echo "<p>Your GPA is <strong>".number_format ($gpa, 2)
+      . "</strong> ($interpretation).</p>"; 
+} else { 
+echo "<p>No valid courses entered.</p>";
 }
+} else { 
 
-?>
-
-</table>
-
-<br>
-
-<h2>Your GPA = <?php echo round($gpa,2); ?></h2>
-
-</body>
-</html>
+echo "Data not  received.";
+ } 
+?> 
