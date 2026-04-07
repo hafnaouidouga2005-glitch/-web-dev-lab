@@ -25,7 +25,7 @@ $tableHtml .= "<tr>
 <td>$course</td><td>$cr</td> 
 <td>$g</td><td>$pts</td>
 </tr>"; 
-
+}
 $tableHtml .= "</table>"; 
    
 if ($totalCredits >o){
