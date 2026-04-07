@@ -1,6 +1,6 @@
 <?php
 $result  = "";
-$tableHtml = "";
+$tableHtml .= "";
 if ($_SERVER ['REQUEST_METHOD'] =='POST'){
   $courses = $_POST [' course'] ?? [];
   $credits =$_POST [' credits'] ??[];
@@ -8,7 +8,7 @@ if ($_SERVER ['REQUEST_METHOD'] =='POST'){
   $totalPoints = 0;
     $totalCredits=0; 
   
-$tableHtml = "<table>";
+$tableHtml .= "<table>";
   $tableHtml .= "<tr> 
 <th>Course</th><th>Credits</th>
     <th>Grade</th><th>Grade Points</th>
