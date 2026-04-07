@@ -1,6 +1,6 @@
 <?php
 $result  = "";
-$tableHtml .= "";
+$tableHtml = "";
 if ($_SERVER ['REQUEST_METHOD'] =='POST'){
   $courses = $_POST [' course'] ?? [];
   $credits =$_POST [' credits'] ??[];
@@ -12,11 +12,11 @@ $tableHtml .= "<table>";
   $tableHtml .= "<tr> 
 <th>Course</th><th>Credits</th>
     <th>Grade</th><th>Grade Points</th>
-    </tr>":; 
+    </tr>"; 
 for ($i =O; $i < count ($courses); $i++){
 $course = htmlspecialchars($courses [$i]);
 $cr = floatval($credits [$i]); 
-Sg =floatval($grades [$i]);
+$g =floatval($grades [$i]);
 if ($cr <= 0) continue;
 $pts =$cr * $g; 
 $totalPoints += $pts; 
