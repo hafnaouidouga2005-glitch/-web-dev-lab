@@ -58,21 +58,20 @@ $result ="No valid courses entered.";
 <h1>GPA Calculator</h1>
   <?php if ($result !=""):?> 
 <?php echo $tableHtml;?> 
-<p><strong><?= Sresult ?></strong></p>
-    <?php endif:?> 
-<formaction=""method="post" onsubmit="return validateForm();"> 
+<p><strong><?= $result ?></strong></p>
+    <?php endif;?> 
+<form action=""method="post" onsubmit="return validateForm();"> 
 <div id="courses"> 
-<div class="course-rOW"> 
+<div class="course-row"> 
   <label>Course:</label> 
-<input type="text" name=" course[]" 
-  
+<input type="text" name=" course[]"   
 placeholder"e.g. Mathematics"required>
   <label>Credits:</label> 
 <input type="number"name="credits[]"
-  placeholder="e.g. 3" min="1"required>
+  placeholder="e.g. 3" min="1" required>
   <label>Grade:</label> 
 <select name="grade[]"> 
-<option value="4.0">A</option>
+  <option value="4.0">A</option>
   <option value="3.0">B</option>
   <option value="2.0">C</option> 
   <option value="1.0">D</option>
