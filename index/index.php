@@ -25,13 +25,13 @@ $tableHtml .= "<tr>
 <td>$course</td><td>$cr</td> 
 <td>$g</td><td>$pts</td>
 </tr>"; 
- {
+
 $tableHtml .= "</table>"; 
    
 if ($totalCredits >o){
   $gpa =$totalPoints / $totalcredits;
   if ($gpa >= 3.7) {
-    $interpretation-"Distinction"; 
+    $interpretation="Distinction"; 
 } elseif ($gpa >= 3.0){
     $interpretation ="Merit"; 
     
@@ -39,7 +39,7 @@ if ($totalCredits >o){
   $interpretation ="Pass"; 
 } else { $interpretation ="Fail"; 
  }        
-$result-"Your GPA is ". number_format ($gpa, 2) 
+$result="Your GPA is ". number_format ($gpa, 2) 
   ."($interpretation)."; 
 } else  {
 $result ="No valid courses entered.";
@@ -60,7 +60,7 @@ $result ="No valid courses entered.";
 <?php echo $tableHtml;?> 
 <p><strong><?= Sresult ?></strong></p>
     <?php endif:?> 
-<formaction=" method="post" onsubmit="return validateForm();"> 
+<formaction=""method="post" onsubmit="return validateForm();"> 
 <div id="courses"> 
 <div class="course-rOW"> 
   <label>Course:</label> 
@@ -68,7 +68,7 @@ $result ="No valid courses entered.";
   
 placeholder"e.g. Mathematics"required>
   <label>Credits:</label> 
-<input type="number" name="credits[] "
+<input type="number"name="credits[]"
   placeholder="e.g. 3" min="1"required>
   <label>Grade:</label> 
 <select name="grade[]"> 
@@ -86,4 +86,4 @@ placeholder"e.g. Mathematics"required>
 <input type="submit" value="Calculate GPA"> 
 </form> 
 </body>
-</htmi>
+</html>
