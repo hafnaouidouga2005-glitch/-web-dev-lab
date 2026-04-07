@@ -9,7 +9,7 @@ if ($_SERVER ['REQUEST_METHOD'] =='POST'){
     $totalCredits=0; 
   
 $tableHtml = "<table>";
-  $tableHtml .=<tr> 
+  $tableHtml .= "<tr> 
 <th>Course</th><th>Credits</th>
     <th>Grade</th><th>Grade Points</th>
     </tr>":; 
@@ -21,7 +21,7 @@ if ($cr <= 0) continue;
 $pts =$cr * $g; 
 $totalPoints += $pts; 
 $totalCredits+= $cr;
-$tableHtml .=<tr> 
+$tableHtml .= "<tr> 
 <td>$course</td><td>$cr</td> 
 <td>$g</td><td>$pts</td>
 </tr>"; 
