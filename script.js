@@ -1,54 +1,45 @@
+function addCourse() {
+    var row = document.createElement("div");
+    row.className = "course-row";
 
-document.addEventListener("DOMContentLoaded", function () {
+    row.innerHTML =
+        '<label>Course:</label>' +
+        '<input type="text" name="course[]" required>' +
 
-    // زر إضافة مادة
-    document.getElementById("addCourse").addEventListener("click", function () {
-        let courses = document.getElementById("courses");
-        let firstRow = document.querySelector(".course-row");
+        '<label>Credits:</label>' +
+        '<input type="number" name="credits[]" min="1" required>' +
 
-        let newRow = firstRow.cloneNode(true);
+        '<label>Grade:</label>' +
+        '<select name="grade[]">' +
+        '<option value="4.0">A</option>' +
+        '<option value="3.0">B</option>' +
+        '<option value="2.0">C</option>' +
+        '<option value="1.0">D</option>' +
+        '<option value="0.0">F</option>' +
+        '</select>' +
 
-        // تنظيف القيم
-        newRow.querySelectorAll("input").forEach(input => input.value = "");
+        '<button type="button" onclick="this.parentNode.remove()">Remove</button>';
 
-        courses.appendChild(newRow);
-    });
+    document.getElementById("courses").appendChild(row);
+}
 
-    // حذف مادة
-    document.addEventListener("click", function (e) {
-        if (e.target.classList.contains("remove-row")) {
-            let rows = document.querySelectorAll(".course-row");
+function validateForm() {
+    let courses = document.querySelectorAll('[name="course[]"]');
+    let credits = document.querySelectorAll('[name="credits[]"]');
 
-            if (rows.length > 1) {
-                e.target.closest(".course-row").remove();
-            }
+    for (let i = 0; i < courses.length; i++) {
+        if (courses[i].value.trim() === "") {
+            alert("Course required!");
+            return false;
         }
-    });
+    }
 
-    // حساب GPA (إرسال إلى PHP)
-    document.getElementById("gpaForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+    for (let i = 0; i < credits.length; i++) {
+        if (credits[i].value <= 0) {
+            alert("Credits must be positive!");
+            return false;
+        }
+    }
 
-        let formData = new FormData(this);
-
-        fetch("calculate.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            let result = document.getElementById("result");
-
-            if (data.success) {
-                result.innerHTML = <div style="color: green;">${data.message}</div>;
-            } else {
-                result.innerHTML = <div style="color: red;">${data.message}</div>;
-            }
-        })
-        .catch(() => {
-            document.getElementById("result").innerHTML =
-                "<div style='color:red;'>Server Error</div>";
-        });
-    });
-
-});
+    return true;
+}
